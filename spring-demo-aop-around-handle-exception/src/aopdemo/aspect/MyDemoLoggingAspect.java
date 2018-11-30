@@ -42,10 +42,14 @@ public class MyDemoLoggingAspect {
 			result = theProceedingJoinPoint.proceed();
 			
 		} catch (Exception e) {
-			
+			// log the exception
 			myLogger.warning(e.getMessage());
 			
-			result = "Major accident! But no worried, your private AOP helicopter is on the way!";
+//			// give us a custom message
+//			result = "Major accident! But no worried, your private AOP helicopter is on the way!";
+			
+			// rethrow exception
+			throw e;
 		}
 		
 		// get end timestamp
